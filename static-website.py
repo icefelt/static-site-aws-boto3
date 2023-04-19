@@ -4,7 +4,7 @@ import boto3
 s3 = boto3.client('s3')
 
 # Create a bucket
-bucket_name = 'my-static-website'
+bucket_name = 'Icefelt-Test-Bucket'
 s3.create_bucket(Bucket=bucket_name)
 
 # Set the bucket as a static website
@@ -29,7 +29,7 @@ s3.put_bucket_policy(
             'Effect': 'Allow',
             'Principal': '*',
             'Action': 's3:GetObject',
-            'Resource': 'arn:aws:s3:::my-static-website/*'
+            'Resource': 'arn:aws:s3:::Icefelt-Test-Bucket/*'
         }]
     })
 )
