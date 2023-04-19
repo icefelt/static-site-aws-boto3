@@ -33,3 +33,6 @@ s3.put_bucket_policy(
         }]
     })
 )
+
+# Print the bucket's website endpoint
+print(s3.get_bucket_website(Bucket=bucket_name)['WebsiteConfiguration']['Endpoint'])
