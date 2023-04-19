@@ -5,7 +5,8 @@ s3 = boto3.client('s3')
 
 # Create a bucket
 bucket_name = 'Icefelt-Test-Bucket'
-s3.create_bucket(Bucket=bucket_name)
+s3.create_bucket(Bucket=bucket_name,
+    CreateBucketConfiguration={'LocationConstraint': 'us-west-2'})
 
 # Set the bucket as a static website
 website_configuration = {
