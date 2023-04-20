@@ -24,8 +24,15 @@ $ python -m venv ./venv && source venv/bin/activate
 ```
 
 ## Usage
+
+Create the bucket 
 ```sh
 $ python static-website.py
+```
+
+Delete the bucket using AWS CLI
+```sh
+$ aws s3 rb s3://icefelt-test-bucket
 ```
 
 ## Release History
