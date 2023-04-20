@@ -4,19 +4,19 @@ import boto3
 s3 = boto3.client('s3')
 
 # Create a bucket
-bucket_name = 'Icefelt-Test-Bucket'
+bucket_name = 'icefelt-test-bucket'
 s3.create_bucket(Bucket=bucket_name,
     CreateBucketConfiguration={'LocationConstraint': 'us-west-2'})
 
 # Set the bucket as a static website
 website_configuration = {
-    'IndexDocument': 'index.html',
-    'ErrorDocument': '404.html'
+    'ErrorDocument': {'Key': 'error.html'},
+    'IndexDocument': {'Suffix': 'index.html'},
 }
 s3.put_bucket_website(Bucket=bucket_name, WebsiteConfiguration=website_configuration)
 
 # Upload the static website files to the bucket
-for file_name in ['index.html', '404.html']:
+for file_name in ['index.html', 'error.html']:
     with open(file_name, 'rb') as f:
         s3.upload_fileobj(f, bucket_name, file_name)
 
@@ -30,7 +30,7 @@ s3.put_bucket_policy(
             'Effect': 'Allow',
             'Principal': '*',
             'Action': 's3:GetObject',
-            'Resource': 'arn:aws:s3:::Icefelt-Test-Bucket/*'
+            'Resource': 'arn:aws:s3:::icefelt-test-bucket/*'
         }]
     })
 )
