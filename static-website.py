@@ -1,3 +1,5 @@
+#! /bin/python3
+
 import boto3
 
 # Create an S3 client
